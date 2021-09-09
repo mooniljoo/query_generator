@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html lang="kr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>test_Query</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="Query.js"></script>
+    <script>
+        var query = new Query();
+        console.log(query)
+
+        query.SetTable("테이블")
+        query.SetGroup("그룹")
+        query.AddColumn("이름","임나연")
+        query.AddNVColumn("나이",26)
+        query.AddCondition("나이 = '26'")
+        query.AddOrder("DESC")
+        query.SetLimit(1,2,3)
+                        
+        InsertQuery = query.InsertQuery()
+        UpdateQuery = query.UpdateQuery()
+        DeleteQuery = query.DeleteQuery()
+
+        TotalRowQuery = query.TotalRowQuery(true)
+        SelectQueryNoLimit = query.SelectQueryNoLimit()
+
+        html = '' 
+        html += InsertQuery +'<br/>'
+        html += UpdateQuery +'<br/>'
+        html += DeleteQuery +'<br/>'
+
+        html += TotalRowQuery +'<br/>'
+        html += SelectQueryNoLimit +'<br/>'
+
+        var app = document.getElementById('app')
+        app.innerHTML = html
+
+    </script>
+</body>
+</html>
